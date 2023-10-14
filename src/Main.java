@@ -4,20 +4,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean runGame = true;
-        while (runGame) {
+        while (runGame) { // game loop
             Rooms room = new Rooms();
-            room.startMenu();
+            room.startGame();
 
             System.out.println("Would you like to exit the game?");
             System.out.println("1. Exit the game");
             System.out.println("2. Restart the game");
             int choice = getUserChoice(input);
             if (choice == 1) {
-                runGame = false;
+                runGame = false; // close program
             }
         }
     }
-    public static int getUserChoice(Scanner scanner) {
+    public static int getUserChoice(Scanner scanner) { // user input handler
         int choice;
         while (true) {
             System.out.print("Enter your choice: ");
