@@ -48,6 +48,23 @@ public class Rooms extends Main {
         System.out.println("LINE3");
         System.out.println("LINE4");
         int choice = getUserChoice(input);
+        switch (choice) {
+            case 1:
+                System.out.println("TEST OUTPUT1");
+                System.out.println("================================================");
+            case 2:
+                System.out.println("TEST OUTPUT2");
+                System.out.println("================================================");
+            case 3:
+                System.out.println("TEST OUTPUT 3");
+                System.out.println("================================================");
+            case 4:
+                System.out.println("TEST OUTPUT4");
+                System.out.println("================================================");
+            default:
+                System.out.println("TEST DEFAULT SWITCH CASE");
+                System.out.println("================================================");
+        }
         Room3();
     }
 
