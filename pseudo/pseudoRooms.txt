@@ -1,0 +1,19 @@
+Rooms Class
+
+import scanner
+declare class Rooms extending off Main
+start game method runs menu method
+
+public input method
+
+public menu method
+    declare playername string
+    Get user name
+    initialize player object
+    set player name
+    start Room 1
+
+public room1 method
+    prompt user
+
+

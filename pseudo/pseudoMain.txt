@@ -1,0 +1,28 @@
+Main Class
+
+import scanner
+
+declare Main class
+main method
+    runGame is true
+    WHILE runGame is true
+        start game room
+        (after game room methods run)
+        ask user
+            Exit game?
+            Restart Game?
+        get user input
+            IF exit is true
+                end WHILE loop
+    Goodbye to user
+
+get user choice method
+    WHILE loop
+        get user choice
+        TRY
+            IF validation
+            Else "You entered an invalid option, try again"
+        CATCH NOT A NUMBER
+            Enter a number
+
+END FILE

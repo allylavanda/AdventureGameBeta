@@ -1,0 +1,13 @@
+Player Class
+    declare player name and room method
+    private string for player name
+    private string for player room
+    private player karma
+    setName method
+    setRoom method
+    setKarma method
+    getName method
+    getRoom method
+    getKarma method
+
+    write data to save file method

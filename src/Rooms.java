@@ -1,12 +1,17 @@
 import java.util.Scanner;
 
 public class Rooms extends Main {
-    public void startGame() {Menu();}
-    public static Scanner input = new Scanner(System.in);
+    public void startGame() {  // start game
+        initRooms();
+        Menu();
+    }
 
-    public static void Menu() { // pyramid scheme
+    public static Scanner input = new Scanner(System.in); // init scanner
+    private static final Object[] roomOne = new Object[6];
+    private static String roomOneMap;
+
+    private static void Menu() { // pyramid scheme
         String playerName;
-        Scanner input = new Scanner(System.in);
         System.out.println("================================================");
         System.out.println("        Enter your character's name: ");
         playerName = input.nextLine();
@@ -15,67 +20,32 @@ public class Rooms extends Main {
         System.out.println("================================================");
         Room1();
     }
-    public static void Room1() {
-        System.out.println("PROMPT");
-        System.out.println("LINE1");
-        System.out.println("LINE2");
-        System.out.println("LINE3");
-        System.out.println("LINE4");
-        int choice = getUserChoice(input);
-        switch (choice) {
-            case 1:
-                System.out.println("TEST OUTPUT1");
-                System.out.println("================================================");
-            case 2:
-                System.out.println("TEST OUTPUT2");
-                System.out.println("================================================");
-            case 3:
-                System.out.println("TEST OUTPUT 3");
-                System.out.println("================================================");
-            case 4:
-                System.out.println("TEST OUTPUT4");
-                System.out.println("================================================");
-            default:
-                System.out.println("TEST DEFAULT SWITCH CASE");
-                System.out.println("================================================");
+    private static void Room1() { // Subterranean Pit
+        System.out.println(roomOne[0]);
+        System.out.println(roomOneMap);
         }
-        Room2();
+    private static void Room2() { // Gallery
     }
-    public static void Room2() {
-        System.out.println("PROMPT");
-        System.out.println("LINE1");
-        System.out.println("LINE2");
-        System.out.println("LINE3");
-        System.out.println("LINE4");
-        int choice = getUserChoice(input);
-        switch (choice) {
-            case 1:
-                System.out.println("TEST OUTPUT1");
-                System.out.println("================================================");
-            case 2:
-                System.out.println("TEST OUTPUT2");
-                System.out.println("================================================");
-            case 3:
-                System.out.println("TEST OUTPUT 3");
-                System.out.println("================================================");
-            case 4:
-                System.out.println("TEST OUTPUT4");
-                System.out.println("================================================");
-            default:
-                System.out.println("TEST DEFAULT SWITCH CASE");
-                System.out.println("================================================");
-        }
-        Room3();
+    private static void Room3() { // Queen Chamber
     }
-
-    public static void Room3() {
-        Room4();
-
+    private static void Room4() { // King chamber
     }
-    public static void Room4() {
-        Room5();
+    private static void Room5() { // Prince Bonus Chamber
     }
-    public static void Room5() {
+    private void initRooms() {
+        // init room one
+        roomOneMap = """
+                ------------------------
+                |                       |
+                |                x      |
+                |                       |
+                |  o                    |
+                ------------------------""";
+        roomOne[0] = "You come across a pyramid you are going to explore.\nAs you descend deeper into the mysterious depths, " +
+                "the door ominously shuts behind you, trapping you inside.\nWith your wits and skills, you must " +
+                "navigate the treacherous labyrinth, uncover ancient secrets,\nand overcome formidable challenges to " +
+                "escape the pyramid's clutches.";
+        roomOne[1] = "test";
 
     }
 }
