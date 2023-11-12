@@ -1,3 +1,6 @@
+/** This program was made by Daniel Boardman for CIS-132 on 11/11/2023
+* The purpose of this program is to **/
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
