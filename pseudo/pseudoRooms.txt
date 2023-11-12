@@ -1,19 +1,149 @@
 Rooms Class
 
 import scanner
-declare class Rooms extending off Main
-start game method runs menu method
+extend main for user choice handler
 
-public input method
+declare vars and objects
+    Scanner
+    init instance of player class
+    object for each room, 1,2,3 and 4
 
-public menu method
-    declare playername string
-    Get user name
-    initialize player object
-    set player name
-    start Room 1
+startGame method
+    initialize room arrays method
+    start menu method
 
-public room1 method
-    prompt user
+start menu method
+    get player name
+    add player name input to player class
+    set player lives to 3
+    set score to 0
+    set tokens to 0
+    start room 1
 
+room 1 method
+    set player room to 1
+    FOR (4 times) {
+        prompt riddle question to player, iterate through room object
+        display multiple choice answers 1, 2 and 3
+    }
+    call input handler method
+    open token shop after room
+    after token shop is done, continue to next room
 
+room 2 method
+    set player room to 2
+    FOR (4 times) {
+        prompt riddle question to player, iterate through room object
+        display multiple choice answers 1, 2 and 3
+    }
+    call input handler method
+    open token shop after room
+    after token shop is done, continue to next room
+
+room 3 method
+    set player room to 3
+    FOR (4 times) {
+        prompt riddle question to player, iterate through room object
+        display multiple choice answers 1, 2 and 3
+    }
+    call input handler method
+    open token shop after room
+    after token shop is done, continue to next room
+
+room 4 method
+    set player room to 4
+    FOR (4 times) {
+        prompt riddle question to player, iterate through room object
+        display multiple choice answers 1, 2 and 3
+    }
+    call input handler method
+    open token shop after room
+    after token shop is done, continue to next end
+
+room end method
+    Congratulate player on completion
+    display player score
+    multiply score by left over tokens, 1 token = 0.5x
+    write player score to scoreboard file
+    return to main
+
+tokenShop method
+    init run boolean for loop
+    SWITCH (room number) {
+        1: Congrats on clearing room 1
+        2: congrats on clearing gallery
+        3: congrats on clearing queen chamber
+        4: congrats on clearing king chamber
+        default: you broke the game good job
+    }
+    WHILE(RUN is true){
+
+    print welcome to shop
+    print player score, lives and points
+    show options to player,
+        1. buy lives, ( 1 life is worth 2 tokens)
+        2. save tokens and continue to the next chamber
+    IF (check user input and see if player has points to buy the lives they want to buy) {
+        IF player has 2 token
+            1 life can be bought
+        IF player has 4
+            2 life can be bought
+        IF player has 6
+            3 life can be bought
+        ELSE
+            player can not buy any lives
+    }
+    ask player to exit or look at shop again
+    IF (player says look again) {
+        continue loop
+    } else {
+       RUN = false
+    }
+    return to room
+    }
+
+inputHandler method
+    IF (player choice == correct) {
+        Print "You answered right!"
+        add 1000 score
+        add 1 token
+    } ELSE IF [if player answered wrong] {
+        print "you answered incorrectly, you lise 1 life and 500 points"
+        subtract 1 life
+        subtract 500 score
+    } ELSE {
+        player used token from shop to get a hint
+
+method to create all room objects on game start
+    room1 array
+        [0] = description of the room you entered
+        [1] = Riddle to answer
+        [2] = Answer 1
+        [3] = Answer 2
+        [4] = Answer 3
+        [5] = correct answer value
+        [6] = answer hint, (this will only show if the user owns hint points from the token shop
+    room 2 array
+        [0] = description of the room you entered
+        [1] = Riddle to answer
+        [2] = Answer 1
+        [3] = Answer 2
+        [4] = Answer 3
+        [5] = correct answer value
+        [6] = answer hint, (this will only show if the user owns hint points from the token shop
+    room 3 array
+        [0] = description of the room you entered
+        [1] = Riddle to answer
+        [2] = Answer 1
+        [3] = Answer 2
+        [4] = Answer 3
+        [5] = correct answer value
+        [6] = answer hint, (this will only show if the user owns hint points from the token shop
+    room 4 array
+        [0] = description of the room you entered
+        [1] = Riddle to answer
+        [2] = Answer 1
+        [3] = Answer 2
+        [4] = Answer 3
+        [5] = correct answer value
+        [6] = answer hint, (this will only show if the user owns hint points from the token shop

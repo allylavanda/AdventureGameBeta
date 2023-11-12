@@ -1,13 +1,24 @@
 Player Class
-    declare player name and room method
-    private string for player name
-    private string for player room
-    private player karma
-    setName method
-    setRoom method
-    setKarma method
-    getName method
-    getRoom method
-    getKarma method
 
-    write data to save file method
+private player name
+private token count
+private lives
+private score
+private current room player is in
+private hint tokens
+public token methods
+    set, get, add, add Hint token, subtract hint token
+public room methods
+    set, get
+public life point methods
+    set, get, add, subtract
+public score methods
+    set, get, add, subtract
+public name methods
+    set, get
+public String for scoreboard
+    Name:
+    Lives:
+    Tokens:
+    Current Room:
+    Score:

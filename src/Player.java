@@ -26,4 +26,11 @@ public class Player {
 
     public void setName(String name) {playerName = name;} // set player name
     public String getName() {return playerName;} // get player name
+    public String getPlayerData(){
+        return "Player Name: "+playerName+
+                "Lives: "+lives+
+                "Tokens: "+tokens+
+                "Current Room: "+currentRoom+
+                "Score: "+playerScore;
+    }
 }
