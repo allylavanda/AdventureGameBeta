@@ -4,12 +4,12 @@ import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner input = new Scanner(System.in);
         boolean runGame = true;
         while (runGame) { // game loop
-            Rooms room = new Rooms();
-            room.startGame();
+            Game game = new Game();
+            game.start();
 
             System.out.println("Would you like to exit the game?");
             System.out.println("1. Exit the game");

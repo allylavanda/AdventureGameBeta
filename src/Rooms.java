@@ -1,38 +1,119 @@
 import java.util.Scanner;
 
 public class Rooms extends Main {
-    private static final Player player = new Player();
-    public void startGame() {  // start game
-        initRooms();
-        Menu();
-    }
-    public static Scanner input = new Scanner(System.in); // init scanner
-    private static final Object[] roomOne = new Object[6];
-    private static final Object[] roomTwo = new Object[6];
-    private static final Object[] roomThree = new Object[6];
-    private static final Object[] roomFour = new Object[6];
+    private static final Object[] roomOne = new Object[12];
+    private static final Object[] roomTwo = new Object[12];
+    private static final Object[] roomThree = new Object[12];
+    private static final Object[] roomFour = new Object[12];
+    private static Scanner input = new Scanner(System.in);
 
-    private static void Menu() {
-        String playerName;
-        System.out.println("================================================");
-        System.out.println("Enter your character's name: ");
-        playerName = input.nextLine();
-        player.setLives(3);
-        player.setTokens(0);
-        player.setName(playerName);
-        System.out.println("================================================");
-        Room1();
-    }
-    private static void Room1() { // Subterranean Pit
+
+    public static boolean Room1(Player player) throws InterruptedException {
         player.setRoom(1);
-        for (int i = 0; i < 5; i++) {
-            System.out.println(roomOne[i]);
+        int correct, answer;
+
+        for (int j = 0; j < 5; j++) {
+            System.out.println(roomOne[j]);
+            Thread.sleep(2000);
         }
-        InputHandler((int)roomOne[5], getUserChoice(input));
-        TokenShop();
-        Room2();
+        correct = (int) roomOne[5];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+
+        for (int i = 6; i < 11; i++) {
+            System.out.println(roomOne[i]);
+            Thread.sleep(2000);
+        }
+        correct = (int) roomOne[11];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+        return true;
     }
-    private static void InputHandler(int correct,int choice) {
+    public static boolean Room2(Player player) throws InterruptedException {
+        player.setRoom(2);
+        int correct, answer;
+        for (int j = 0; j < 5; j++) {
+            System.out.println(roomTwo[j]);
+            Thread.sleep(2000);
+        }
+        correct = (int) roomTwo[5];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+
+        for (int i = 6; i < 11; i++) {
+            System.out.println(roomTwo[i]);
+            Thread.sleep(2000);
+        }
+        correct = (int) roomTwo[5];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+        return true;
+    }
+    public static boolean Room3(Player player) throws InterruptedException {
+        player.setRoom(3);
+        int correct, answer;
+        for (int j = 0; j < 5; j++) {
+            System.out.println(roomThree[j]);
+            Thread.sleep(2000);
+        }
+        correct = (int) roomThree[5];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+
+        for (int i = 6; i < 11; i++) {
+            System.out.println(roomThree[i]);
+            Thread.sleep(2000);
+        }
+        correct = (int) roomThree[5];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+        return true;
+    }
+    public static boolean Room4(Player player) throws InterruptedException {
+        player.setRoom(2);
+        int correct, answer;
+        for (int j = 0; j < 5; j++) {
+            System.out.println(roomFour[j]);
+            Thread.sleep(2000);
+        }
+        correct = (int) roomFour[5];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+
+        for (int i = 6; i < 11; i++) {
+            System.out.println(roomFour[i]);
+            Thread.sleep(2000);
+        }
+        correct = (int) roomFour[5];
+        answer = getUserChoice(input);
+        InputHandler(correct, answer, player);
+        if (player.getLives() < 1) {
+            return Game.runRoom = false;
+        }
+        return true;
+    }
+    private static void InputHandler(int correct,int choice, Player player) {
         if (correct == choice) {
             System.out.println("You have answered correctly!");
             player.addToken(1);
@@ -43,20 +124,10 @@ public class Rooms extends Main {
             player.subtractScore(500);
         }
     }
-
-    private static void Room2() { // Gallery
-        player.setRoom(2);
-    }
-    private static void Room3() { // Queen Chamber
-        player.setRoom(3);
-    }
-    private static void Room4(){ // get to if u get 90% correct
-        // double or nothing trivia
-    }
-    private static void TokenShop() {
+    public static void TokenShop(Player player) throws InterruptedException {
         boolean runShop = true;
-        System.out.println("Welcome to the token shop!");
-        System.out.println("You currently have: " +player.getTokens()+ "tokens.");
+        System.out.println("===============================================");
+        Thread.sleep(1000);
         switch (player.getRoom()) {
             case 1 -> {
                 System.out.println("Congratulations on clearing the Subterranean Pit!");
@@ -73,8 +144,10 @@ public class Rooms extends Main {
             }
             default -> System.out.println("How did you get here? You broke the code.");
         }
+        System.out.println("===============================================");
         while (runShop) {
-            System.out.println("Welcome to the token shop, you currently have " + player.getTokens() + " tokens and " + player.getLives() + "lives.");
+            System.out.println("Welcome to the token shop, you currently have " + player.getTokens() + " tokens and " + player.getLives() + " lives.");
+            Thread.sleep(1000);
             System.out.println("You have the choice to spend your tokens to gain 1 life, or you can save them til the end to" +
                     "multiply your score.");
             System.out.println("1. Buy lives, 1 life is 2 tokens.");
@@ -90,7 +163,7 @@ public class Rooms extends Main {
                     }
                 } else if (getUserChoice(input) == 2) {
                     if (player.getTokens() >= 4) {
-                        System.out.println("You have bought two lives.");
+                        System.out.println("You have bought Three lives.");
                         player.addLife(2);
                     } else {
                         System.out.println("You do not have enough tokens.");
@@ -104,27 +177,69 @@ public class Rooms extends Main {
                     }
                 }
             }
+            Thread.sleep(1000);
+            System.out.println("===============================================");
             System.out.println("Would you like to exit the token shop and continue to the next chamber?");
-            System.out.println("Look at the token shop's inventory again.");
-            System.out.println("Continue to the next chamber.");
+            Thread.sleep(1000);
+            System.out.println("1. Look at the token shop's inventory again.");
+            System.out.println("2. Continue to the next chamber.");
             if (getUserChoice(input) == 2) {
                 runShop = false;
             }
-
         }
     }
-    private void initRooms() {
+    public static void initRooms() {
         // Room One Array
-        roomOne[0] = "You come across a pyramid you are going to explore.\nAs you descend deeper into the mysterious depths, " +
-                "the door ominously shuts behind you, trapping you inside.\nWith your wits and skills, you must " +
-                "navigate the treacherous labyrinth, uncover ancient secrets,\nand overcome formidable challenges to " +
-                "escape the pyramid's clutches.";
+        roomOne[0] = "Prompt 1";
         roomOne[1] = "Question 1"; // question 1
         roomOne[2] = "Answer 1";
         roomOne[3] = "Answer 2";
         roomOne[4] = "Answer 3";
-        roomOne[5] = 2; // answer number
-        // Room Two Array
-
+        roomOne[5] = 2; // answer number for this set
+        roomOne[6] = "Prompt 2";
+        roomOne[7] = "Question 2";
+        roomOne[8] = "Answer 1";
+        roomOne[9] = "Answer 2";
+        roomOne[10] = "Answer 3";
+        roomOne[11] = 1;
+        // Room Three Array
+        roomTwo[0] = "Prompt 1";
+        roomTwo[1] = "Question 1"; // question 1
+        roomTwo[2] = "Answer 1";
+        roomTwo[3] = "Answer 2";
+        roomTwo[4] = "Answer 3";
+        roomTwo[5] = 2; // answer number for this set
+        roomTwo[6] = "Prompt 2";
+        roomTwo[7] = "Question 2";
+        roomTwo[8] = "Answer 1";
+        roomTwo[9] = "Answer 2";
+        roomTwo[10] = "Answer 3";
+        roomTwo[11] = 3;
+        // Room three array
+        roomThree[0] = "Prompt 1";
+        roomThree[1] = "Question 1"; // question 1
+        roomThree[2] = "Answer 1";
+        roomThree[3] = "Answer 2";
+        roomThree[4] = "Answer 3";
+        roomThree[5] = 2; // answer number for this set
+        roomThree[6] = "Prompt 2";
+        roomThree[7] = "Question 2";
+        roomThree[8] = "Answer 1";
+        roomThree[9] = "Answer 2";
+        roomThree[10] = "Answer 3";
+        roomThree[11] = 2;
+        // Room four array
+        roomFour[0] = "Prompt 1";
+        roomFour[1] = "Question 1"; // question 1
+        roomFour[2] = "Answer 1";
+        roomFour[3] = "Answer 2";
+        roomFour[4] = "Answer 3";
+        roomFour[5] = 2; // answer number for this set
+        roomFour[6] = "Prompt 2";
+        roomFour[7] = "Question 2";
+        roomFour[8] = "Answer 1";
+        roomFour[9] = "Answer 2";
+        roomFour[10] = "Answer 3";
+        roomFour[11] = 1;
     }
 }
