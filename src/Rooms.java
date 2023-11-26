@@ -9,7 +9,6 @@ public class Rooms extends Main {
 
 
     public static boolean Room1(Player player) throws InterruptedException {
-        player.setCurrentRoom(1);
         int correct, answer;
 
         for (int j = 0; j < 5; j++) {
@@ -33,10 +32,10 @@ public class Rooms extends Main {
         if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
+        player.setCurrentRoom(1);
         return true;
     }
     public static boolean Room2(Player player) throws InterruptedException {
-        player.setCurrentRoom(2);
         int correct, answer;
         for (int j = 0; j < 5; j++) {
             System.out.println(roomTwo[j]);
@@ -59,10 +58,10 @@ public class Rooms extends Main {
         if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
+        player.setCurrentRoom(2);
         return true;
     }
     public static boolean Room3(Player player) throws InterruptedException {
-        player.setCurrentRoom(3);
         int correct, answer;
         for (int j = 0; j < 5; j++) {
             System.out.println(roomThree[j]);
@@ -85,10 +84,11 @@ public class Rooms extends Main {
         if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
+        player.setCurrentRoom(3);
         return true;
     }
     public static boolean Room4(Player player) throws InterruptedException {
-        player.setCurrentRoom(4);
+        ;
         int correct, answer;
         for (int j = 0; j < 5; j++) {
             System.out.println(roomFour[j]);
@@ -111,6 +111,7 @@ public class Rooms extends Main {
         if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
+        player.setCurrentRoom(4);
         return true;
     }
     private static void InputHandler(int correct,int choice, Player player) {

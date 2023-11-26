@@ -100,9 +100,9 @@ public class Player {
     public void subtractCurrentHP(int hpToSubtract) {
         this.currentHP -= hpToSubtract;
         //TODO if (answer != correctAnswer) in main
-        if (this.currentHP > 0) {
+        /**if (this.currentHP > 0) {
             this.currentHP--;
-        }
+        } **/
     }
     public void subtractPlayerScore(double score) {
         playerScore -= score;

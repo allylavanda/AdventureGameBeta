@@ -9,12 +9,16 @@ public class Game {
         Menu();
         while (runRoom) { // end game if player hits 0 lives
             runRoom = Rooms.Room1(player);
+            if (!runRoom) {break;}
             Rooms.TokenShop(player);
             runRoom = Rooms.Room2(player);
+            if (!runRoom) {break;}
             Rooms.TokenShop(player);
             runRoom = Rooms.Room3(player);
+            if (!runRoom) {break;}
             Rooms.TokenShop(player);
             runRoom = Rooms.Room4(player);
+            if (!runRoom) {break;}
         }
         if (player.getCurrentRoom() == 4){
             System.out.println("Congratulations! You have cleared all rooms!");
