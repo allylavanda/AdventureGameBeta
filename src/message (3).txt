@@ -14,7 +14,7 @@ public class Player {
 
     //Player constructor
     public Player(String playerName, int tokens, int currentHP, double playerScore, int points, int hints,
-                  int potions, int currentRoom, double percentCorrect, boolean isAlive) {
+                 int potions, int currentRoom, double percentCorrect, boolean isAlive) {
         this.playerName = playerName;
         this.tokens = tokens;
         this.currentHP = currentHP;
@@ -66,7 +66,7 @@ public class Player {
     public void setTokens(int tokens) { //TODO Player.setTokens(0); in main
         this.tokens = tokens;
     }
-    public void setCurrentHP(int currentHP) { //TODO Player.setCurrentHP(3); in main
+        public void setCurrentHP(int currentHP) { //TODO Player.setCurrentHP(3); in main
         this.currentHP = currentHP;
     }
     public void setPlayerScore(double playerScore) { //TODO Player.setScore(0); in main
@@ -92,7 +92,7 @@ public class Player {
         this.currentHP += hpToAdd;
         if (this.currentHP < maxHP) {
             potions--;
-        }
+            }
         else {
             System.out.println("You're already at full health.");
         }
@@ -104,15 +104,9 @@ public class Player {
             this.currentHP--;
         }
     }
-    public void subtractPlayerScore(double score) {
-        playerScore -= score;
-    }
     public void addTokens(int tokensToAdd) {
         this.tokens+=tokensToAdd;
         //TODO if (answer == correctAnswer) in main; initialize tokensToAdd in main
-    }
-    public void addHP(int hpToAdd) {
-        currentHP += hpToAdd;
     }
 
     public void addPoints(int pointsToAdd) {//Helper method to accumulate points

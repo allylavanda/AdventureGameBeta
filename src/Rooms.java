@@ -9,7 +9,7 @@ public class Rooms extends Main {
 
 
     public static boolean Room1(Player player) throws InterruptedException {
-        player.setRoom(1);
+        player.setCurrentRoom(1);
         int correct, answer;
 
         for (int j = 0; j < 5; j++) {
@@ -19,7 +19,7 @@ public class Rooms extends Main {
         correct = (int) roomOne[5];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
 
@@ -30,13 +30,13 @@ public class Rooms extends Main {
         correct = (int) roomOne[11];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
         return true;
     }
     public static boolean Room2(Player player) throws InterruptedException {
-        player.setRoom(2);
+        player.setCurrentRoom(2);
         int correct, answer;
         for (int j = 0; j < 5; j++) {
             System.out.println(roomTwo[j]);
@@ -45,7 +45,7 @@ public class Rooms extends Main {
         correct = (int) roomTwo[5];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
 
@@ -56,13 +56,13 @@ public class Rooms extends Main {
         correct = (int) roomTwo[5];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
         return true;
     }
     public static boolean Room3(Player player) throws InterruptedException {
-        player.setRoom(3);
+        player.setCurrentRoom(3);
         int correct, answer;
         for (int j = 0; j < 5; j++) {
             System.out.println(roomThree[j]);
@@ -71,7 +71,7 @@ public class Rooms extends Main {
         correct = (int) roomThree[5];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
 
@@ -82,13 +82,13 @@ public class Rooms extends Main {
         correct = (int) roomThree[5];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
         return true;
     }
     public static boolean Room4(Player player) throws InterruptedException {
-        player.setRoom(2);
+        player.setCurrentRoom(4);
         int correct, answer;
         for (int j = 0; j < 5; j++) {
             System.out.println(roomFour[j]);
@@ -97,7 +97,7 @@ public class Rooms extends Main {
         correct = (int) roomFour[5];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
 
@@ -108,7 +108,7 @@ public class Rooms extends Main {
         correct = (int) roomFour[5];
         answer = getUserChoice(input);
         InputHandler(correct, answer, player);
-        if (player.getLives() < 1) {
+        if (player.getCurrentHP() < 1) {
             return Game.runRoom = false;
         }
         return true;
@@ -116,19 +116,19 @@ public class Rooms extends Main {
     private static void InputHandler(int correct,int choice, Player player) {
         if (correct == choice) {
             System.out.println("You have answered correctly!");
-            player.addToken(1);
-            player.addScore(1000);
+            player.addTokens(1);
+            player.addPlayerScore(1000);
         } else {
             System.out.println("You have entered incorrectly, you lose 1 life.");
-            player.subtractLife();
-            player.subtractScore(500);
+            player.subtractCurrentHP(1);
+            player.subtractPlayerScore(500);
         }
     }
     public static void TokenShop(Player player) throws InterruptedException {
         boolean runShop = true;
         System.out.println("===============================================");
         Thread.sleep(1000);
-        switch (player.getRoom()) {
+        switch (player.getCurrentRoom()) {
             case 1 -> {
                 System.out.println("Congratulations on clearing the Subterranean Pit!");
             }
@@ -146,7 +146,7 @@ public class Rooms extends Main {
         }
         System.out.println("===============================================");
         while (runShop) {
-            System.out.println("Welcome to the token shop, you currently have " + player.getTokens() + " tokens and " + player.getLives() + " lives.");
+            System.out.println("Welcome to the token shop, you currently have " + player.getTokens() + " tokens and " + player.getCurrentHP() + " lives.");
             Thread.sleep(1000);
             System.out.println("You have the choice to spend your tokens to gain 1 life, or you can save them til the end to" +
                     "multiply your score.");
@@ -157,21 +157,21 @@ public class Rooms extends Main {
                 if (getUserChoice(input) == 1) {
                     if (player.getTokens() >= 2) {
                         System.out.println("You have bought one life.");
-                        player.addLife(1);
+                        player.addHP(1);
                     } else {
                         System.out.println("You do not have enough tokens.");
                     }
                 } else if (getUserChoice(input) == 2) {
                     if (player.getTokens() >= 4) {
                         System.out.println("You have bought Three lives.");
-                        player.addLife(2);
+                        player.addHP(2);
                     } else {
                         System.out.println("You do not have enough tokens.");
                     }
                 } else if (getUserChoice(input) == 3) {
                     if (player.getTokens() >= 6) {
                         System.out.println("You have bought three lives");
-                        player.addLife(3);
+                        player.addHP(3);
                     } else {
                         System.out.println("You do not have enough tokens.");
                     }
