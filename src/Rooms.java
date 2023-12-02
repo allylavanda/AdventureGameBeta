@@ -11,14 +11,14 @@ public class Rooms extends Main {
     public static boolean Room1(Player player) throws InterruptedException {
         int correct, answer;
 
-        for (int j = 0; j < 5; j++) {
-            System.out.println(roomOne[j]);
-            Thread.sleep(2000);
+        for (int j = 0; j < 5; j++) { // iterate through room array
+            System.out.println(roomOne[j]); // print question
+            Thread.sleep(2000); // delay prints to not overwhelm user
         }
-        correct = (int) roomOne[5];
-        answer = getUserChoice(input);
-        InputHandler(correct, answer, player);
-        if (player.getCurrentHP() < 1) {
+        correct = (int) roomOne[5]; // set correct answer
+        answer = getUserChoice(input); // set user choice to answer var
+        InputHandler(correct, answer, player); // pass player, players answer and correct answer to input handler
+        if (player.getCurrentHP() < 1) { // check if player is dead
             return Game.runRoom = false;
         }
 
@@ -115,36 +115,20 @@ public class Rooms extends Main {
         return true;
     }
     private static void InputHandler(int correct,int choice, Player player) {
-        if (correct == choice) {
+        if (correct == choice) { // check if answer is correct
             System.out.println("You have answered correctly!");
-            player.addTokens(1);
-            player.addPlayerScore(1000);
-        } else {
+            player.addTokens(1); // add 1 token
+            player.addPlayerScore(1000); // add score
+        } else { // if not correct
             System.out.println("You have entered incorrectly, you lose 1 life.");
-            player.subtractCurrentHP(1);
-            player.subtractPlayerScore(500);
+            player.subtractCurrentHP(1); // lose health
+            player.subtractPlayerScore(500); // lose score
         }
     }
     public static void TokenShop(Player player) throws InterruptedException {
-        boolean runShop = true;
+        boolean runShop = true; // set run variable
         System.out.println("===============================================");
-        Thread.sleep(1000);
-        switch (player.getCurrentRoom()) {
-            case 1 -> {
-                System.out.println("Congratulations on clearing the Subterranean Pit!");
-            }
-            case 2 -> {
-                System.out.println("Congratulations on clearing the Gallery");
-            }
-            case 3 -> {
-                System.out.println("Congratulations on clearing the Queen's Chamber");
-            }
-            case 4 -> {
-                System.out.println("Congratulations on clearing the King's Chamber");
-
-            }
-            default -> System.out.println("How did you get here? You broke the code.");
-        }
+        Thread.sleep(1000); // delay for user display
         System.out.println("===============================================");
         while (runShop) {
             System.out.println("Welcome to the token shop, you currently have " + player.getTokens() + " tokens and " + player.getCurrentHP() + " lives.");
@@ -158,14 +142,14 @@ public class Rooms extends Main {
                 if (getUserChoice(input) == 1) {
                     if (player.getTokens() >= 2) {
                         System.out.println("You have bought one life.");
-                        player.addHP(1);
+                        player.addHP(1); // add life
                     } else {
                         System.out.println("You do not have enough tokens.");
                     }
                 } else if (getUserChoice(input) == 2) {
                     if (player.getTokens() >= 4) {
                         System.out.println("You have bought Three lives.");
-                        player.addHP(2);
+                        player.addHP(2); // add life
                     } else {
                         System.out.println("You do not have enough tokens.");
                     }
@@ -180,12 +164,12 @@ public class Rooms extends Main {
             }
             Thread.sleep(1000);
             System.out.println("===============================================");
-            System.out.println("Would you like to exit the token shop and continue to the next chamber?");
+            System.out.println("Would you like to exit the token shop and continue to the next chamber?"); // ask user to continue or look at shop again
             Thread.sleep(1000);
             System.out.println("1. Look at the token shop's inventory again.");
             System.out.println("2. Continue to the next chamber.");
             if (getUserChoice(input) == 2) {
-                runShop = false;
+                runShop = false; // end shop and continue back to loop
             }
         }
     }
